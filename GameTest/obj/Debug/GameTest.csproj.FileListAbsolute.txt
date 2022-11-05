@@ -1,0 +1,8 @@
+C:\Users\caitl\Source\Repos\BeNice\GameTest\bin\Debug\GameTest.exe.config
+C:\Users\caitl\Source\Repos\BeNice\GameTest\bin\Debug\GameTest.exe
+C:\Users\caitl\Source\Repos\BeNice\GameTest\bin\Debug\GameTest.pdb
+C:\Users\caitl\Source\Repos\BeNice\GameTest\obj\Debug\GameTest.csproj.AssemblyReference.cache
+C:\Users\caitl\Source\Repos\BeNice\GameTest\obj\Debug\GameTest.csproj.SuggestedBindingRedirects.cache
+C:\Users\caitl\Source\Repos\BeNice\GameTest\obj\Debug\GameTest.csproj.CoreCompileInputs.cache
+C:\Users\caitl\Source\Repos\BeNice\GameTest\obj\Debug\GameTest.exe
+C:\Users\caitl\Source\Repos\BeNice\GameTest\obj\Debug\GameTest.pdb
