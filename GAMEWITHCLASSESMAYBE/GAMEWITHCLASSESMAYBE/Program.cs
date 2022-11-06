@@ -18,7 +18,7 @@ namespace GAMEWITHCLASSESMAYBE
             int GDIWidth = 800;
             int GDIHeight = 600;
             string name;
-            int lives;
+            double lives;
             int situationCounter = 0;
 
 
@@ -48,7 +48,7 @@ namespace GAMEWITHCLASSESMAYBE
                 switch (situationCounter)
                 {
                     case 0:
-                        situationOne(lives, name);
+                        lives = lives - situationOne(lives, name);
                         situationCounter++;
                         break;
                     
@@ -232,7 +232,7 @@ namespace GAMEWITHCLASSESMAYBE
         }
 
         //show lives and such
-        static void lifeDisplay(int currentLives)
+        static void lifeDisplay(double currentLives)
         {
             int consolePosition;
             string textToDisplay = $"You have {currentLives} lives.";
@@ -249,11 +249,15 @@ namespace GAMEWITHCLASSESMAYBE
 
         //situation 1
 
-        static double situationOne(int lives, string playerName)
+        static double situationOne(double lives, string playerName)
         {
             string oneOne = "You get to school and see your friend, Brad, looks disheveled.";
             string oneTwo = "What do you say?";
             string twoOne = "Brad : 'My dog died last night :( '";
+            string threeOneOne = "Brad : '... I loved Trevor ;-; '";
+            string threeOneTwo = $"Brad : 'You're an awful friend, {playerName}!'";
+            string threeTwoOne = $"Brad : 'Not really, but its nice to know you're here for me, {playerName} '";
+            string threeThreeOne = "Brad : 'Oh ...'";
 
             string optionsOneOne = "A : 'Hey Brad! Are you ok?' ";
             string optionsOneTwo = "B : 'You look disgusting. What happened?' ";
@@ -268,6 +272,7 @@ namespace GAMEWITHCLASSESMAYBE
 
             int dialogueCounter = 0;
             int x = 0;
+            int situation3 = 0;
             int consolePosition;
             bool pass1 = false;
             bool pass2 = false;
@@ -329,6 +334,9 @@ namespace GAMEWITHCLASSESMAYBE
                 {
                     slowWrite("You weren't a very good friend to Brad. His dog just died.");
                     badChoices++;
+                    Console.WriteLine();
+                    slowWrite($"You lost {badChoices} life this round.");
+                    Console.ReadLine();
                     return badChoices;
                 }
 
@@ -371,21 +379,45 @@ namespace GAMEWITHCLASSESMAYBE
                 {
                     badChoices++;
                     pass2 = true;
+                    situation3 = 1;
                 }
                 else if(userChoice == "b")
                 {
                     pass2 = true;
+                    situation3 = 2;
                 }
                 else if (userChoice == "c")
                 {
                     badChoices = badChoices + 0.5;
                     pass2 = true;
+                    situation3 = 3;
                 }
 
 
             } while (!pass2);
 
+            
+            
+            switch (situation3)
+            {
+                case 1:
+                    slowWrite(threeOneOne);
+                    Console.WriteLine();
+                    slowWrite(threeOneTwo);
+                    break;
+                case 2:
+                    slowWrite(threeTwoOne);
+                    break;
+                case 3:
+                    slowWrite(threeThreeOne);
+                    break;
+            }
 
+
+            Console.WriteLine();
+            Console.WriteLine($"You lost {badChoices} lives this round.");
+            Console.ReadLine();
+            
             return badChoices;
         }
 
@@ -400,6 +432,7 @@ namespace GAMEWITHCLASSESMAYBE
                 Console.Write(c);
                 System.Threading.Thread.Sleep(5);
             }
+
         }
 
 
