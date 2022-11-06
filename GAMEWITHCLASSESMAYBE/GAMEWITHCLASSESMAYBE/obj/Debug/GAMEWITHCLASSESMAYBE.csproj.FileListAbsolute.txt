@@ -8,3 +8,12 @@ C:\Users\caitl\Desktop\codeHackEd\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\obj\
 C:\Users\caitl\Desktop\codeHackEd\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\obj\Debug\GAMEWITHCLASSESMAYBE.csproj.CopyComplete
 C:\Users\caitl\Desktop\codeHackEd\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\obj\Debug\GAMEWITHCLASSESMAYBE.exe
 C:\Users\caitl\Desktop\codeHackEd\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\obj\Debug\GAMEWITHCLASSESMAYBE.pdb
+C:\Users\caitl\source\repos\forrealthistime\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\obj\Debug\GAMEWITHCLASSESMAYBE.csproj.AssemblyReference.cache
+C:\Users\caitl\source\repos\forrealthistime\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\obj\Debug\GAMEWITHCLASSESMAYBE.csproj.SuggestedBindingRedirects.cache
+C:\Users\caitl\source\repos\forrealthistime\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\obj\Debug\GAMEWITHCLASSESMAYBE.csproj.CoreCompileInputs.cache
+C:\Users\caitl\source\repos\forrealthistime\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\obj\Debug\GAMEWITHCLASSESMAYBE.exe
+C:\Users\caitl\source\repos\forrealthistime\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\obj\Debug\GAMEWITHCLASSESMAYBE.pdb
+C:\Users\caitl\source\repos\forrealthistime\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\bin\Debug\GAMEWITHCLASSESMAYBE.exe.config
+C:\Users\caitl\source\repos\forrealthistime\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\bin\Debug\GAMEWITHCLASSESMAYBE.exe
+C:\Users\caitl\source\repos\forrealthistime\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\bin\Debug\GAMEWITHCLASSESMAYBE.pdb
+C:\Users\caitl\source\repos\forrealthistime\GAMEWITHCLASSESMAYBE\GAMEWITHCLASSESMAYBE\obj\Debug\GAMEWITHCLASSESMAYBE.csproj.CopyComplete

@@ -30,6 +30,8 @@ namespace GAMEWITHCLASSESMAYBE
             //doing things
             
             //get player name from player
+            slowWrite("...A new player approaches...");
+            Console.WriteLine();
             name = /*player1.name =*/ getName();
 
             do
@@ -53,6 +55,8 @@ namespace GAMEWITHCLASSESMAYBE
                         break;
                     
                     case 1:
+                        lives = lives - situationTwo(lives, name);
+                        situationCounter++;
                         break;
 
                     case 2:
@@ -61,8 +65,8 @@ namespace GAMEWITHCLASSESMAYBE
                     case 3:
                         break;
                 }
-
-
+                slowWrite("Press any key to continue");
+                Console.ReadLine();
 
 
 
@@ -97,14 +101,11 @@ namespace GAMEWITHCLASSESMAYBE
                 bool notAllowed = false;
                 string askName = "What is your name? ";
                 string wrongName = "I don't think your parents named you that...";
-
-                
                 foreach (char c in askName)
                 {
                     Console.Write(c);
                     System.Threading.Thread.Sleep(5);
                 }
-
                 userName = Console.ReadLine();
 
                 foreach (char c in userName)
@@ -116,7 +117,6 @@ namespace GAMEWITHCLASSESMAYBE
                         {
                             Console.Write(d);
                             System.Threading.Thread.Sleep(5);
-
 
                         }
                         Console.WriteLine("");
@@ -154,25 +154,14 @@ namespace GAMEWITHCLASSESMAYBE
 
             if (textCounter == 0)
             {
-
-                foreach (char c in firstDialogue)
-                {
-                    Console.Write(c);
-                    System.Threading.Thread.Sleep(5);
-                }
+                slowWrite(firstDialogue);
                 Console.WriteLine();
                 textCounter++;
-
             }
 
             if (textCounter == 1)
             {
-
-                foreach (char c in secondDialogue)
-                {
-                    Console.Write(c);
-                    System.Threading.Thread.Sleep(5);
-                }
+                slowWrite(secondDialogue);
                 Console.WriteLine();
                 textCounter++;
             }
@@ -180,12 +169,7 @@ namespace GAMEWITHCLASSESMAYBE
             if (textCounter == 2)
             {
                 //canvas.Render();
-
-                foreach (char c in thirdDialogue)
-                {
-                    Console.Write(c);
-                    System.Threading.Thread.Sleep(5);
-                }
+                slowWrite(thirdDialogue);
                 Console.WriteLine();
                 textCounter++;
             }
@@ -193,22 +177,14 @@ namespace GAMEWITHCLASSESMAYBE
 
             while (!getAnswer)
             {
-                foreach (char c in fourthDialogue)
-                {
-                    Console.Write(c);
-                    System.Threading.Thread.Sleep(5);
-                }
-
+                slowWrite(fourthDialogue);
+                Console.WriteLine();
+                slowWrite("Your selection is: ");
                 userAnswer = Console.ReadLine().ToLower();
 
                 if (userAnswer != "y" && userAnswer != "n")
                 {
-                    foreach (char c in "Sorry, I don't accept that answer.")
-                    {
-                        Console.Write(c);
-                        System.Threading.Thread.Sleep(5);
-
-                    }
+                    slowWrite("Sorry, I don't accept that answer.");
 
                 }
 
@@ -228,7 +204,6 @@ namespace GAMEWITHCLASSESMAYBE
                 return false;
             }
 
-            Console.ReadLine();
         }
 
         //show lives and such
@@ -265,7 +240,7 @@ namespace GAMEWITHCLASSESMAYBE
             string optionsTwoOne = "A : Good. That was one ugly dog.";
             string optionsTwoTwo = "B : I'm so sorry! Is there anything I can do to help you?";
             string optionsTwoThree = "C : That sucks. I have a hamster.";
-            //string optionsOneThree = "C : Hey, Brad, Are "
+
 
 
             string userChoice;
@@ -292,16 +267,18 @@ namespace GAMEWITHCLASSESMAYBE
 
                     while (x <= 2)
                     {
-                        consolePosition = Console.WindowWidth / 6;
                         switch (x)
                         {
                             case 0:
+                                indentText();
                                 slowWrite(optionsOneOne);
                                 break;
                             case 1:
+                                indentText();
                                 slowWrite(optionsOneTwo);
                                 break;
                             case 2: 
+                                indentText();
                                 slowWrite(optionsOneThree);
                                 break;
 
@@ -313,7 +290,8 @@ namespace GAMEWITHCLASSESMAYBE
                     }
                     dialogueCounter++;
                 }
-
+                Console.WriteLine();
+                slowWrite("Your selection is: ");
                 userChoice = Console.ReadLine().ToLower();
                 if (userChoice != "a" && userChoice != "b" && userChoice != "c")
                 {
@@ -348,25 +326,31 @@ namespace GAMEWITHCLASSESMAYBE
                 {
                     slowWrite(twoOne);
                     Console.WriteLine();
+                    slowWrite(oneTwo);
+                    Console.WriteLine();
                     while (x <= 5)
                     {
                         switch (x)
                         {
                             case 3:
+                                indentText();
                                 slowWrite(optionsTwoOne);
                                 x++;
                                 break;
                             case 4:
+                                indentText();
                                 slowWrite(optionsTwoTwo);
                                 x++;
                                 break;
                             case 5:
+                                indentText();
                                 slowWrite(optionsTwoThree);
                                 x++;
                                 break;
                         }
                         Console.WriteLine();
                     }
+                    dialogueCounter++;
                 }
                 userChoice = Console.ReadLine().ToLower();
                 if (userChoice != "a" && userChoice != "b" && userChoice != "c")
@@ -400,6 +384,7 @@ namespace GAMEWITHCLASSESMAYBE
             
             switch (situation3)
             {
+
                 case 1:
                     slowWrite(threeOneOne);
                     Console.WriteLine();
@@ -416,9 +401,161 @@ namespace GAMEWITHCLASSESMAYBE
 
             Console.WriteLine();
             Console.WriteLine($"You lost {badChoices} lives this round.");
-            Console.ReadLine();
             
             return badChoices;
+        }
+
+        //situation 2
+        static double situationTwo(double playerLives, string playerName)
+        {
+            string userAnswer = "";
+            string howRespond = "How do you respond?";
+            string oneOne = "You have an interview with a fast food restaurant.";
+            string oneTwo = "Today you will be meeting with Lindsay, who will be interviewing you for a cashier position.";
+            string oneThree = "Lindsay: 'How are you doing?' "; 
+
+            string optionsOneOne = "A: I tell her about the conversation I had with Brad and ask her for advice.";
+            string optionsOneTwo = "B: I ignore the question and tell her how many other jobs I could get. ";
+            string optionsOneThree = "C: I say, 'I’m doing okay. How are you?' ";
+
+            string reactionsOneOne = "Lindsay : 'Let’s stick to the interview questions.'";
+            string reactionsOneTwo = "Lindsay : 'You sound very confident.' ";
+            string reactionsOneTwoTwo = "Lindsay : 'Unfortunately, I don’t think you’re the right fit for our team right now. Thank you for your time.'";
+            string reactionsOneThree = "Lindsay smiles and nods.";
+            string reactionsOneThreeOne = "Lindsay : 'I’m good, thank you for asking.' ";
+
+            string outcomesOneOne = "A few weeks have gone by since your interview, and you still haven’t heard from Lindsay about the job.";
+            string outcomesOneTwo = "When you talk to your parents about it,your mom says that your answer was too personal and might have made Lindsay feel uncomfortable.";
+            string outcomesTwoOne = "You ignored Lindsay’s question and made a bad impression. You will not be able to reapply to this restaurant";
+            string outcomesThreeOne = "Lindsay thought you were very friendly and, based on your interview performance, would make a good cashier. "; 
+            string outcomesThreeTwo = "She has recommended you for the job.";
+
+            bool pass1 = false;
+
+            int dialogueCounter = 1;
+            int consolePosition;
+            int x = 0;
+            int badChoices = 0;
+            int spacingCounter= 0;
+
+            do
+            {
+                slowWrite(oneOne);
+                Console.WriteLine();
+                slowWrite(oneTwo);
+                Console.WriteLine();
+                Console.WriteLine();
+                slowWrite(oneThree);
+                Console.WriteLine();
+
+
+                if(dialogueCounter == 1)
+                {
+                    while (x <=2)
+                    {
+
+                        
+                        //slowWrite(either questionSay or questionDo);
+                        switch (x)
+                        {
+                            case 0:
+                                indentText();
+                                slowWrite(optionsOneOne);
+                                break;
+                            case 1:
+                                indentText();
+                                slowWrite(optionsOneTwo);
+                                break;
+                            case 2: 
+                                indentText();
+                                slowWrite(optionsOneThree);
+                                break;
+
+                        }
+                        x++;
+                        Console.WriteLine();
+                    }
+                    dialogueCounter++;
+                        
+                }
+                    
+                Console.WriteLine();
+                
+                dialogueCounter++;
+                slowWrite(howRespond);
+                Console.WriteLine();
+                slowWrite("Your selection is : ");
+                userAnswer = Console.ReadLine().ToLower();
+                if(userAnswer != "a" && userAnswer != "b" && userAnswer !="c")
+                {
+                    slowWrite("That was not a valid choice. Try again!");
+                    Console.WriteLine();
+                    pass1 = false; 
+
+                }
+                else if (userAnswer == "a")
+                {
+                    slowWrite(reactionsOneOne);
+                    pass1 = true;
+
+                    badChoices++;
+                }
+                else if (userAnswer == "b")
+                {
+                    slowWrite(reactionsOneTwo);
+                    Console.WriteLine();
+                    slowWrite(reactionsOneTwoTwo);
+                    pass1 = true;
+                    badChoices = badChoices + 2;
+
+
+                }
+                else if (userAnswer == "c")
+                {
+                    slowWrite(reactionsOneThree);
+                    Console.WriteLine();
+                    slowWrite(reactionsOneThreeOne);
+                    pass1 = true;
+                    badChoices = badChoices;
+                }
+            } while (!pass1);
+
+
+            Console.WriteLine();
+
+            while (spacingCounter < Console.WindowWidth)
+            {
+                Console.Write("~");
+                spacingCounter++;
+            }
+
+            if (userAnswer == "a")
+            {
+                slowWrite(outcomesOneOne);
+                Console.WriteLine();
+                slowWrite(outcomesOneTwo);
+                Console.WriteLine();
+            }
+            else if (userAnswer == "b")
+            {
+                slowWrite(outcomesTwoOne);
+                Console.WriteLine();
+
+            }
+            else if (userAnswer == "c")
+            {                    
+                slowWrite(outcomesThreeOne);
+                Console.WriteLine();
+                slowWrite(outcomesThreeTwo);
+                Console.WriteLine();
+
+            }
+
+            
+
+            Console.WriteLine($"You lost {badChoices} lives this round.");
+            return badChoices;
+
         }
 
 
@@ -436,7 +573,13 @@ namespace GAMEWITHCLASSESMAYBE
         }
 
 
-
+        //do the indents on the options
+        static void indentText()
+        {
+            int consolePosition;
+            consolePosition = Console.WindowWidth / 12;
+            Console.CursorLeft = consolePosition;
+        }
 
 
 
