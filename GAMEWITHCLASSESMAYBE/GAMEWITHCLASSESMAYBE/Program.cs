@@ -20,7 +20,7 @@ namespace GAMEWITHCLASSESMAYBE
             string name;
             double lives;
             int situationCounter = 0;
-
+            bool alwaysTrue = true;
 
 
             //other stuff
@@ -41,47 +41,59 @@ namespace GAMEWITHCLASSESMAYBE
 
             } while (playGame == false);
 
-
-            lives = 3;
             do
-            {
-                lifeDisplay(lives);
-                if (lives >= 0)
-                { 
-                    switch (situationCounter)
-                    {
-                        case 0:
-                            lives = lives - situationOne(lives, name);
-                            situationCounter++;
-                            break;
-                    
-                        case 1:
-                            lives = lives - situationTwo(lives, name);
-                            situationCounter++;
-                            break;
+            { 
 
-                        case 2:
-                            break;
-
-                        case 3:
-                            break;
-                    }
-                    slowWrite("Press any key to continue");
-                    Console.ReadLine();
-                }
-                else 
+                lives = 3;
+                do
                 {
-                    playGame=false;
-                }
+                    lifeDisplay(lives);
+                    if (lives >= 0)
+                    { 
+                        switch (situationCounter)
+                        {
+                            case 0:
+                                lives = lives - situationOne(lives, name);
+                                situationCounter++;
+                                break;
+                    
+                            case 1:
+                                lives = lives - situationTwo(lives, name);
+                                situationCounter++;
+                                break;
+
+                            case 2:
+                                lives = lives - situation3(lives, name);
+                                situationCounter++;
+                                break;
+
+                            case 3:
+                                playGame = false;
+                                break;
+                        }
+                        slowWrite("Press any key to continue");
+                        Console.ReadLine();
+                    }
+                    else if (lives <0)
+                    {
+                        playGame = false;
+                    }
 
 
-            } while (playGame);
+
+                } while (playGame);
+
+                do
+                {
+                    playGame = endGame(lives);
 
 
 
+                } while (!playGame);
 
 
 
+            } while (alwaysTrue);
 
 
 
@@ -319,7 +331,6 @@ namespace GAMEWITHCLASSESMAYBE
                     badChoices++;
                     Console.WriteLine();
                     slowWrite($"You lost {badChoices} life this round.");
-                    Console.ReadLine();
                     return badChoices;
                 }
 
@@ -355,6 +366,8 @@ namespace GAMEWITHCLASSESMAYBE
                         }
                         Console.WriteLine();
                     }
+                    Console.WriteLine();
+                    slowWrite("Your selection is: ");
                     dialogueCounter++;
                 }
                 userChoice = Console.ReadLine().ToLower();
@@ -556,13 +569,209 @@ namespace GAMEWITHCLASSESMAYBE
 
             }
 
-            
-
             Console.WriteLine($"You lost {badChoices} lives this round.");
             return badChoices;
 
         }
 
+        //situation 3
+        static double situation3(double lives, string playerName)
+        {
+            string oneOne = "While you’re out picking up groceries you see your friend Alex.";
+            string oneTwo = "You’ve had a crush on them for a while, and you think they might like you back.";
+            string oneThree = "You’d like to compliment Alex. What do you say?";
+            string question = "What do you do?";
+            string displayAnswer = "Your selection : ";
+
+            string optionOne = "A : 'You look really good in those jeans. We should hang out sometime.'";
+            string optionTwo = "B : 'Hey Alex! What a nice surprise running into you here. You look great.'";
+            string optionThree = "C : They look busy. Maybe another time.";
+
+            string reactionOne = "Alex frowns. 'Sorry this isn’t a good time.'";
+            string reactionTwo = $"Alex smiles. 'Thanks, {playerName}. I really needed that today.'";
+
+            string outcomeOne = "Alex didn’t recognize you and your words made them uncomfortable. Next time you should start by introducing yourself.";
+            string outcomeTwo = "Alex is politely telling you they are not interested, but because you used good manners they didn’t feel uncomfortable ";
+            string outcomeTwoTwo = "and it will be easy to remain friends.";
+            string outcomeThree = "Alex saw you and is hurt that you didn’t say hi. They were having a hard day and could’ve used a friend.";
+
+            string userAnswer = "";
+            bool play1 = false;
+            int dialogueCounter = 1;
+            int x = 0;
+            double badChoices = 0;
+            int spaceCounter = 0;
+
+            do
+            {
+
+
+
+                if (dialogueCounter == 1)
+                    {
+                    slowWrite(oneOne);
+                    Console.WriteLine();
+                    slowWrite(oneTwo);
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    slowWrite(oneThree);
+                    Console.WriteLine();
+                    slowWrite(question);
+                    Console.WriteLine();
+                    while (x <=2)
+                    {
+                        switch (x)
+                        {
+                            case 0:
+                                indentText();
+                                slowWrite(optionOne);
+                                break;
+
+                            case 1:
+                                indentText();
+                                slowWrite(optionTwo);
+                                break;
+                            case 2:
+                                indentText();
+                                slowWrite(optionThree);
+                                break;
+
+
+                        }
+                        x++;
+                        Console.WriteLine();
+                    }
+
+                    dialogueCounter++;
+
+                }
+                slowWrite(displayAnswer);
+                userAnswer = Console.ReadLine().ToLower();
+                if (userAnswer != "a" && userAnswer != "b" && userAnswer != "c")
+                {
+                    
+                    slowWrite("That was not a valid choice. Try again!");
+                    Console.WriteLine();
+                    play1 = false; 
+                }
+
+                if (userAnswer =="a")
+                {
+                    slowWrite(reactionOne);
+                    Console.WriteLine();
+                    badChoices = badChoices + 0.5;
+                    play1 = true;
+                }
+                if (userAnswer == "b")
+                {
+                    slowWrite(reactionTwo);
+                    Console.WriteLine();
+                    badChoices = badChoices;
+                    play1 = true;
+                }
+                if (userAnswer == "c")
+                {
+                    badChoices++;
+                    slowWrite(outcomeThree);
+                    Console.WriteLine();
+                    return badChoices;
+                }
+
+
+
+
+
+            } while (!play1);
+
+            while (spaceCounter < Console.WindowWidth)
+            {
+                Console.Write("~");
+                spaceCounter++;
+            }
+            Console.WriteLine();
+            if (userAnswer == "a")
+            {
+                slowWrite(outcomeOne);
+                Console.WriteLine();
+            }
+            if (userAnswer == "b")
+            {
+                slowWrite(outcomeTwo);
+                Console.WriteLine();
+                slowWrite(outcomeTwoTwo);
+            }
+
+
+            Console.WriteLine();
+            return badChoices;
+
+
+
+
+        }
+
+        //end the game
+        static bool endGame(double playerLives)
+        {
+            string oneOne = "You made it through alive.";
+            string oneTwo = $"You have {playerLives} left. Good job!";
+            string badOutCome = "Oh no! You died!";
+            string two = "Want to play again? Y/N: ";
+            string userAnswer = "";
+
+            bool goodAnswer = false;
+
+            slowWrite(oneOne);
+            Console.WriteLine();
+            slowWrite(oneTwo);
+            Console.WriteLine();
+            Console.WriteLine();
+
+            if (playerLives <= 0)
+            {
+                slowWrite(badOutCome);
+                Console.WriteLine();
+                
+            }
+            else
+            {
+                slowWrite(two);
+                Console.WriteLine();
+
+            }
+
+            userAnswer = Console.ReadLine().ToLower();
+            Console.WriteLine();
+
+            do
+            {
+
+                if (userAnswer != "y")
+                {
+                    if (userAnswer == "n")
+                    {
+                        return false;
+                    }
+                    else if (userAnswer != "a" && userAnswer != "n")
+                    {
+                        slowWrite("Sorry, that is not a valid selection");
+                        goodAnswer =false;
+                    }
+                }
+                else if (userAnswer == "y")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+
+            } while (!goodAnswer);
+            return true;
+
+        }
 
         //do the slow text
         static void slowWrite(string textToDisplay)
