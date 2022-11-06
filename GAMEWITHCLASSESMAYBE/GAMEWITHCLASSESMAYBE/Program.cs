@@ -42,32 +42,37 @@ namespace GAMEWITHCLASSESMAYBE
             } while (playGame == false);
 
 
-            lives = 5;
+            lives = 3;
             do
             {
                 lifeDisplay(lives);
-
-                switch (situationCounter)
-                {
-                    case 0:
-                        lives = lives - situationOne(lives, name);
-                        situationCounter++;
-                        break;
+                if (lives >= 0)
+                { 
+                    switch (situationCounter)
+                    {
+                        case 0:
+                            lives = lives - situationOne(lives, name);
+                            situationCounter++;
+                            break;
                     
-                    case 1:
-                        lives = lives - situationTwo(lives, name);
-                        situationCounter++;
-                        break;
+                        case 1:
+                            lives = lives - situationTwo(lives, name);
+                            situationCounter++;
+                            break;
 
-                    case 2:
-                        break;
+                        case 2:
+                            break;
 
-                    case 3:
-                        break;
+                        case 3:
+                            break;
+                    }
+                    slowWrite("Press any key to continue");
+                    Console.ReadLine();
                 }
-                slowWrite("Press any key to continue");
-                Console.ReadLine();
-
+                else 
+                {
+                    playGame=false;
+                }
 
 
             } while (playGame);
@@ -139,8 +144,8 @@ namespace GAMEWITHCLASSESMAYBE
         static bool startGame(string playerName)
         {
             string firstDialogue = $"Ah... {playerName}... It is nice to meet you.";
-            string secondDialogue = "Your challenge is to go about your day. You will make choices and face the consequences.";
-            string thirdDialogue = "For each person you hurt, you will lose a heart. To win, you must end the day without losing all your hearts.";
+            string secondDialogue = "Your challenge is to make it through these everyday situations. You will make choices and face the consequences.";
+            string thirdDialogue = "For every faux pas you will lose a life. To win, you must end the day without losing all of your lives.";
             string fourthDialogue = "Are you ready to begin? Y/N: ";
             string userAnswer = "";
             int textCounter = 0;
