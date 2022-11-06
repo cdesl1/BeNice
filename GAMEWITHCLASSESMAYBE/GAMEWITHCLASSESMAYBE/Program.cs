@@ -24,13 +24,13 @@ namespace GAMEWITHCLASSESMAYBE
 
 
             //other stuff
-            Player player1 = new Player();
+            /*Player player1 = new Player();*/
             //CDrawer canvas = new CDrawer(GDIWidth, GDIHeight, false);
 
             //doing things
             
             //get player name from player
-            name = player1.name = getName();
+            name = /*player1.name =*/ getName();
 
             do
             {
